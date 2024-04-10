@@ -1,10 +1,11 @@
  package desafioTarjetaDebito;
 
 
-public class Test {
+ import javax.swing.*;
+
+ public class Test {
     public static void main(String[] args) {
         TarjetaDebito tarjeta=new TarjetaDebito(20000,20000,true);
-
         Compras compra1=new Compras("Remera",20000);
         tarjeta.comprarItem(compra1);
         tarjeta.mostrarHistorialCompras();

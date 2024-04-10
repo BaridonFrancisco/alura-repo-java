@@ -54,6 +54,8 @@ public class TarjetaDebito {
     public void cargarSaldo(double monto) {
         if (!(cuentaVacia()) && monto > 0 && this.monto + monto <= this.montoMaximo && isActiva()) {
             this.monto += monto;
+        }else {
+            System.out.println("No se a podido cargar saldo revise el estado de su tarjeta");
         }
     }
 
@@ -85,6 +87,7 @@ public class TarjetaDebito {
                 getListaCompras()
         );
     }
+
 
     @Override
     public String toString() {
