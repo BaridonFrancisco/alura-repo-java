@@ -1,7 +1,6 @@
 package desafioStarWars;
 
 import com.google.gson.Gson;
-
 import java.io.*;
 import java.net.URI;
 import java.net.http.HttpClient;
@@ -61,6 +60,15 @@ public class ManagerFilm {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
+
+    }
+    public void writeJson(Object obj,String path,String name) throws IOException {
+        FileWriter fileWriter=new FileWriter(path+name+".json");
+        Gson gson=new Gson().newBuilder()
+                .setPrettyPrinting()
+                .create();
+        fileWriter.write(gson.toJson(obj));
+        fileWriter.close();
 
     }
 }
