@@ -1,0 +1,5 @@
+ ----Pelicula----
+ Titulo: A New Hope
+ Director: George Lucas
+ Productor: Gary Kurtz, Rick McCallum
+ Lanzamiento: 1977-05-25 

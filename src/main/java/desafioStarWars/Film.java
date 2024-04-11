@@ -26,11 +26,12 @@ public class Film {
 
     @Override
     public String toString() {
-        return "Film{" +
-                "title='" + title + '\'' +
-                ", director='" + director + '\'' +
-                ", productor='" + producer + '\'' +
-                ", fechaLanzamiento='" + releaseDate + '\'' +
-                '}';
+      return  String.format("""
+                ----Pelicula----
+                Titulo: %s
+                Director: %s
+                Productor: %s
+                Lanzamiento: %s\s
+               """,title,director,producer,releaseDate);
     }
 }
