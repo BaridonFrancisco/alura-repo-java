@@ -1,0 +1,6 @@
+Date:2024-04-12 java.lang.RuntimeException: sasd
+	at desafioStarWars.Test.main(Test.java:18)
+Date:2024-04-12 java.lang.RuntimeException: sasd
+	at desafioStarWars.Test.main(Test.java:18)
+Date:2024-04-12 java.lang.RuntimeException: sasd
+	at desafioStarWars.Test.main(Test.java:18)

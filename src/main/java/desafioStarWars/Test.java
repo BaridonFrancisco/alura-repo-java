@@ -1,30 +1,30 @@
 package desafioStarWars;
 
-import java.io.File;
 import java.io.IOException;
-import java.io.PrintStream;
 
 public class Test {
     public static void main(String[] args) {
-        menuPeliculas peliculas=new menuPeliculas();
+        menuFilms peliculas=new menuFilms();
         //peliculas.menu();
 
         ManagerFilm managerFilm=new ManagerFilm();
-
+        Logger logger=new Logger();
             //managerFilm.showFilms();
         try {
-            var film= managerFilm.getFilm(1);
-            String path="C:\\Users\\Owner\\Desktop\\Alura\\Alura-repo\\src\\main\\java\\desafioStarWars\\";
+            //var film= managerFilm.getFilm(1);
+            //String path="C:\\Users\\Owner\\Desktop\\Alura\\Alura-repo\\src\\main\\java\\desafioStarWars\\";
             // managerFilm.writeFile(film,new File("C:\\Users\\Owner\\Desktop\\Alura\\Alura-repo\\src\\main\\java\\desafioStarWars\\pelicula.txt"));
-            managerFilm.writeJson(film,path,"peli");
-        } catch (IOException e) {
-            e.printStackTrace();
-            throw new RuntimeException(e);
-        } catch (InterruptedException e) {
-            throw new RuntimeException(e);
-        }catch (FilmNotFoundException e){
+            //managerFilm.writeJson(film,path,"peli");
+            throw new RuntimeException("sasd");
 
+        } catch (FilmNotFoundException e) {
+            logger.writeLoggerFile(e);
+            //throw new RuntimeException(e);
+            //throw new FilmNotFoundException("Boom");
+        } catch (Exception e){
+            logger.writeLoggerFile(e);
         }
+        System.out.println("aaa");
         //System.out.println(film);
             Film film2=new Film("Superman","xx","xx2","2001-01-11");
 

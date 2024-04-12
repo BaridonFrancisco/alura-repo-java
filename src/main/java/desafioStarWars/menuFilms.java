@@ -2,7 +2,7 @@ package desafioStarWars;
 
 import java.util.Scanner;
 
-public class menuPeliculas {
+public class menuFilms {
 
     Scanner sc = new Scanner(System.in);
 

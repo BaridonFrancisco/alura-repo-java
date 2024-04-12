@@ -69,7 +69,6 @@ public class ManagerFilm {
                 .create();
         fileWriter.write(gson.toJson(obj));
         fileWriter.close();
-
     }
 }
 
