@@ -1,6 +1,22 @@
-Date:2024-04-12 java.lang.RuntimeException: sasd
-	at desafioStarWars.Test.main(Test.java:18)
-Date:2024-04-12 java.lang.RuntimeException: sasd
-	at desafioStarWars.Test.main(Test.java:18)
-Date:2024-04-12 java.lang.RuntimeException: sasd
-	at desafioStarWars.Test.main(Test.java:18)
+
+Date:2024-04-13 java.util.InputMismatchException
+	at java.base/java.util.Scanner.throwFor(Scanner.java:943)
+	at java.base/java.util.Scanner.next(Scanner.java:1598)
+	at java.base/java.util.Scanner.nextInt(Scanner.java:2263)
+	at java.base/java.util.Scanner.nextInt(Scanner.java:2217)
+	at desafioStarWars.menuFilms.menu(menuFilms.java:24)
+	at desafioStarWars.test2.main(test2.java:43)
+Date:2024-04-13 java.util.InputMismatchException
+	at java.base/java.util.Scanner.throwFor(Scanner.java:943)
+	at java.base/java.util.Scanner.next(Scanner.java:1598)
+	at java.base/java.util.Scanner.nextInt(Scanner.java:2263)
+	at java.base/java.util.Scanner.nextInt(Scanner.java:2217)
+	at desafioStarWars.menuFilms.menu(menuFilms.java:24)
+	at desafioStarWars.test2.main(test2.java:43)
+Date:2024-04-13 java.util.InputMismatchException
+	at java.base/java.util.Scanner.throwFor(Scanner.java:943)
+	at java.base/java.util.Scanner.next(Scanner.java:1598)
+	at java.base/java.util.Scanner.nextInt(Scanner.java:2263)
+	at java.base/java.util.Scanner.nextInt(Scanner.java:2217)
+	at desafioStarWars.menuFilms.menu(menuFilms.java:24)
+	at desafioStarWars.test2.main(test2.java:43)

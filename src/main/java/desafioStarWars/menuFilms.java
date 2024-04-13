@@ -1,13 +1,14 @@
 package desafioStarWars;
 
-import java.util.Optional;
+
 import java.util.Scanner;
-import java.util.function.Supplier;
+
 
 public class menuFilms {
 
     Scanner sc = new Scanner(System.in);
     ManagerFilm managerFilm = new ManagerFilm();
+    private Logger logger=new Logger();
 
     public void menu() {
         int opcion = 0;
@@ -28,8 +29,11 @@ public class menuFilms {
                     case 2 -> {
                         System.out.println("Seleccione numero de la pelicula");
                         filmNum = sc.nextInt();
-                        Optional<Film>op= Optional.ofNullable(Optional.ofNullable(managerFilm.getFilm(filmNum))
-                                .orElseThrow(RuntimeException::new));
+                        Film film=managerFilm.getFilm(filmNum);
+                        if(film.getTitle()==null){
+                            throw new FilmNotFoundException("Film not found");
+                        }
+
                     }
                     case 3 -> {
                         Thread.sleep(2000);
@@ -39,6 +43,8 @@ public class menuFilms {
 
                 }
             } catch (Exception e) {
+                System.out.println("Error "+e.getMessage());
+                logger.writeLoggerFile(e);
                 sc.nextLine();
             }
         }

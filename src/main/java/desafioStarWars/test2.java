@@ -39,8 +39,8 @@ public class test2 {
             String value = entry.getValue();
             System.out.println("key: " + key+ ", value: " + value);
         }*/
-        /*menuFilms menuFilms=new menuFilms();
-        menuFilms.menu();*/
-        Throwable t=new FilmNotFoundException();
+        menuFilms menuFilms=new menuFilms();
+        menuFilms.menu();
+
     }
 }

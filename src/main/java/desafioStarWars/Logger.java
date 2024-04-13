@@ -16,7 +16,6 @@ public class Logger {
     public void writeLoggerFile(Throwable throwable) {
         try(  FileOutputStream fileOutputStream=new FileOutputStream(file.getAbsolutePath(),true);
               PrintStream printStream=new PrintStream(fileOutputStream)){
-
             printStream.print("Date:"+LocalDate.now()+" ");
             throwable.printStackTrace(printStream);
             printStream.flush();
