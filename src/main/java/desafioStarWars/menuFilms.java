@@ -1,14 +1,17 @@
 package desafioStarWars;
 
-
 import java.util.Scanner;
-
 
 public class menuFilms {
 
     Scanner sc = new Scanner(System.in);
     ManagerFilm managerFilm = new ManagerFilm();
-    private Logger logger=new Logger();
+    //private final Logger logger=new Logger();
+    private final Logger logger=new Logger.Builder()
+            .setPath("C:\\Users\\Owner\\Desktop\\Alura\\Alura-repo\\src\\main\\java\\desafioStarWars\\")
+            .setName("log")
+            .setMkdir("Logger")
+            .build();
 
     public void menu() {
         int opcion = 0;
@@ -33,6 +36,9 @@ public class menuFilms {
                         if(film.getTitle()==null){
                             throw new FilmNotFoundException("Film not found");
                         }
+                        System.out.println("Ingrese el nombre del archivo");
+                        String filmName=sc.next();
+                        managerFilm.writeJson(film,"C:\\Users\\Owner\\Desktop\\Alura\\Alura-repo\\src\\main\\java\\desafioStarWars\\",filmName);
 
                     }
                     case 3 -> {

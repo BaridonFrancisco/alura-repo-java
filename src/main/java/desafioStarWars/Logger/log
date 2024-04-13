@@ -1,0 +1,34 @@
+Date:2024-04-13 java.util.InputMismatchException
+	at java.base/java.util.Scanner.throwFor(Scanner.java:943)
+	at java.base/java.util.Scanner.next(Scanner.java:1598)
+	at java.base/java.util.Scanner.nextInt(Scanner.java:2263)
+	at java.base/java.util.Scanner.nextInt(Scanner.java:2217)
+	at desafioStarWars.menuFilms.menu(menuFilms.java:27)
+	at desafioStarWars.test2.main(test2.java:45)
+Date:2024-04-13 java.util.InputMismatchException
+	at java.base/java.util.Scanner.throwFor(Scanner.java:943)
+	at java.base/java.util.Scanner.next(Scanner.java:1598)
+	at java.base/java.util.Scanner.nextInt(Scanner.java:2263)
+	at java.base/java.util.Scanner.nextInt(Scanner.java:2217)
+	at desafioStarWars.menuFilms.menu(menuFilms.java:27)
+	at desafioStarWars.test2.main(test2.java:45)
+Date:2024-04-13 desafioStarWars.FilmNotFoundException: Film not found
+	at desafioStarWars.menuFilms.menu(menuFilms.java:37)
+	at desafioStarWars.test2.main(test2.java:45)
+Date:2024-04-13 java.util.InputMismatchException
+	at java.base/java.util.Scanner.throwFor(Scanner.java:943)
+	at java.base/java.util.Scanner.next(Scanner.java:1598)
+	at java.base/java.util.Scanner.nextInt(Scanner.java:2263)
+	at java.base/java.util.Scanner.nextInt(Scanner.java:2217)
+	at desafioStarWars.menuFilms.menu(menuFilms.java:34)
+	at desafioStarWars.test2.main(test2.java:45)
+Date:2024-04-13 desafioStarWars.FilmNotFoundException: Film not found
+	at desafioStarWars.menuFilms.menu(menuFilms.java:37)
+	at desafioStarWars.test2.main(test2.java:45)
+Date:2024-04-13 java.util.InputMismatchException
+	at java.base/java.util.Scanner.throwFor(Scanner.java:943)
+	at java.base/java.util.Scanner.next(Scanner.java:1598)
+	at java.base/java.util.Scanner.nextInt(Scanner.java:2263)
+	at java.base/java.util.Scanner.nextInt(Scanner.java:2217)
+	at desafioStarWars.menuFilms.menu(menuFilms.java:27)
+	at desafioStarWars.test2.main(test2.java:45)
