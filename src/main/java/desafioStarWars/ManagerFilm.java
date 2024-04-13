@@ -14,7 +14,7 @@ public class ManagerFilm {
     HttpClient cliente = HttpClient.newHttpClient();
 
 
-    public void showFilms() throws IOException, InterruptedException {
+    public List<Film> showFilms() throws IOException, InterruptedException {
         HttpRequest resquest = HttpRequest.newBuilder()
                 .uri(URI.create("https://swapi.dev/api/films/"))
                 .GET()
@@ -26,6 +26,7 @@ public class ManagerFilm {
         Gson gson = new Gson().newBuilder().setPrettyPrinting().create();
         innerArrayResponse innerClass = gson.fromJson(response.body(), innerArrayResponse.class);
         System.out.println(innerClass.getResults());
+        return innerClass.getResults();
     }
 
     private static class innerArrayResponse {
