@@ -43,16 +43,6 @@ public class test2 {
         }*/
         menuFilms menuFilms=new menuFilms();
         menuFilms.menu();
-       /* Logger logger=new Logger.Builder()
-                .setPath("C:\\Users\\Owner\\Desktop\\Alura\\Alura-repo\\src\\main\\java\\desafioStarWars\\")
-                .setMkdir("Logger")
-                .setName("logger")
-                .build();
-        try {
-            throw new NullPointerException("xx");
-        }catch (RuntimeException e){
-            System.out.println("error"+e.getMessage());
-            logger.writeLoggerFile(e);
-        }*/
+
     }
 }
