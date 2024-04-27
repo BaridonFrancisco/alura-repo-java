@@ -34,9 +34,11 @@ public class ScreenmatchApplication implements CommandLineRunner {
 		List<DatosPorTemporada> datosTemporada=new ArrayList<>();
 		re=consumoApi.obtenerDatos("https://www.omdbapi.com/?t=game+of+thrones&Season=1&apikey=2d969581");
 		DatosPorTemporada datosPorTemporada=convertirDatos.convertirDatos(re,DatosPorTemporada.class);
-		for(DatosEpisodio e:datosPorTemporada.episodios()){
+		/*for(DatosEpisodio e:datosPorTemporada.episodios()){
 			System.out.println(e);
-		}
+		}*/
+		System.out.println(datosPorTemporada);
+
 
 	}
 }

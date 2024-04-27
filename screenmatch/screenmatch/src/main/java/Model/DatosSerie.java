@@ -8,8 +8,11 @@ public record DatosSerie(
         @JsonAlias("Title")
         String titulo,
         @JsonAlias("Year")
-        int anio,
+        String anio,
         @JsonAlias("imdbRating")
-        String evaluaciones) {
+        String evaluaciones,
+        @JsonAlias("totalSeasons")
+        Integer numero
+){
 
 }
