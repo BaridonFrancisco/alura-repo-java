@@ -89,5 +89,12 @@ public class Menu {
                 .mapToDouble(Episodio::getEvaluacion)
                 .summaryStatistics();
         System.out.println(doubleSummaryStatistics);
+        Stream<String>stream1=Stream.of("a","b");
+        Stream<String>stream2=Stream.of("c","d");
+        var union=Stream.concat(stream1,stream2);
+        union.forEach(System.out::println);
+
+
+
     }
 }
