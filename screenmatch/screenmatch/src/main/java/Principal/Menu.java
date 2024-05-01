@@ -8,22 +8,22 @@ import Service.ConsumoAPI;
 import Service.ConvertirDatos;
 import Service.IConvertirDatos;
 import com.fasterxml.jackson.core.JsonProcessingException;
-
-import java.text.DateFormat;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.*;
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
+
 
 public class Menu {
-    private ConsumoAPI consumoApi=new ConsumoAPI();
-    private IConvertirDatos convertirDatos= new ConvertirDatos();
+    private final ConsumoAPI consumoApi=new ConsumoAPI();
+    private final IConvertirDatos convertirDatos= new ConvertirDatos();
     private Scanner sc=new Scanner(System.in);
     static final String URL_BASE="https://www.omdbapi.com/?t=";
     private  final String API_KEY="2d969581";
     String urlSerie;
     private String nombreSerie;
+
+
     public DatosSerie buscarSerie() throws JsonProcessingException {
         System.out.println("Ingrese el nombre de la serie");
         nombreSerie= sc.nextLine().replace(" ","+");
@@ -38,6 +38,7 @@ public class Menu {
        List<DatosPorTemporada> listTemporadas=new ArrayList<>();
         for (int i=1;i<=datosSerie.numero();i++){
             json=consumoApi.obtenerDatos(URL_BASE+nombreSerie+"&Season="+i+"&apikey="+API_KEY);
+            System.out.println(json);
             var datosTemporada=convertirDatos.convertirDatos(json,DatosPorTemporada.class);
             listTemporadas.add(datosTemporada);
         }
@@ -76,7 +77,6 @@ public class Menu {
     }
 
     public Map<Integer,Double> temporadasRating(List<Episodio>listEp){
-
         return listEp.stream()
                 .filter(e->e.getEvaluacion()!=0.0)
                 .collect(Collectors.groupingBy(Episodio::getTemporada,
@@ -88,13 +88,6 @@ public class Menu {
                 .filter(e->e.getEvaluacion()>0.0)
                 .mapToDouble(Episodio::getEvaluacion)
                 .summaryStatistics();
-        System.out.println(doubleSummaryStatistics);
-        Stream<String>stream1=Stream.of("a","b");
-        Stream<String>stream2=Stream.of("c","d");
-        var union=Stream.concat(stream1,stream2);
-        union.forEach(System.out::println);
-
-
 
     }
 }

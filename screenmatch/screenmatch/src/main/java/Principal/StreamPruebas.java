@@ -40,11 +40,7 @@ public class StreamPruebas {
 
         System.out.println(result.get());
 
-
-        for(int i=0;i<100;i++){
-            Optional<String> optionalt = Stream.of("one", "two", "three", "four").flatMap();
-
-        }
+        Stream.iterate(1,n->n+1).limit(5).forEach(System.out::println);
 
     }
 }
