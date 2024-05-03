@@ -1,4 +1,4 @@
-package Model;
+package com.aluraSpring.screenmatch.Model;
 
 import java.util.Arrays;
 

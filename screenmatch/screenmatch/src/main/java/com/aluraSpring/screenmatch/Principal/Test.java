@@ -1,9 +1,6 @@
-package Principal;
+package com.aluraSpring.screenmatch.Principal;
 
-import Model.Categoria;
 import com.fasterxml.jackson.core.JsonProcessingException;
-import java.time.format.DateTimeFormatter;
-import java.util.stream.Stream;
 
 public class Test {
     public static void main(String[] args) {

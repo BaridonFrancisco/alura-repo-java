@@ -1,23 +1,19 @@
 package com.aluraSpring.screenmatch;
-import Model.DatosEpisodio;
-import Model.DatosPorTemporada;
-import Model.DatosSerie;
-import Principal.SeriesMenu;
-import Service.ConsumoAPI;
-import Service.ConvertirDatos;
-import Service.IConvertirDatos;
-import Service.ISerieRepository;
+
+import com.aluraSpring.screenmatch.Principal.SeriesMenu;
+import com.aluraSpring.screenmatch.repository.ISerieRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import java.util.ArrayList;
-import java.util.List;
+
 
 @SpringBootApplication
 public class ScreenmatchApplication implements CommandLineRunner {
-	@Autowired
-	ISerieRepository iSerieRepository;
+
+	@Autowired(required = true)
+	private ISerieRepository iSerieRepository;
+
 	public static void main(String[] args) {
 
 		SpringApplication.run(ScreenmatchApplication.class, args);

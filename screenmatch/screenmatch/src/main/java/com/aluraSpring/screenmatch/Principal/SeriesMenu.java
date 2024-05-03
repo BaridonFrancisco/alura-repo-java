@@ -1,9 +1,10 @@
-package Principal;
+package com.aluraSpring.screenmatch.Principal;
 
-import Model.DatosSerie;
-import Model.Serie;
-import Service.ISerieRepository;
+import com.aluraSpring.screenmatch.Model.DatosSerie;
+import com.aluraSpring.screenmatch.Model.Serie;
 import com.fasterxml.jackson.core.JsonProcessingException;
+import org.springframework.beans.factory.annotation.Autowired;
+import com.aluraSpring.screenmatch.repository.ISerieRepository;
 
 import java.util.ArrayList;
 import java.util.Comparator;
@@ -12,16 +13,14 @@ import java.util.Scanner;
 
 
 public class SeriesMenu {
-    private Menu menu;
+    private Menu menu= new Menu();
     private final Scanner scanner=new Scanner(System.in);
     private List<DatosSerie> datosSeries = new ArrayList<>();
-    ISerieRepository iSerieRepository;
-    public SeriesMenu() {
-        this.menu = new Menu();
-    }
 
-    public SeriesMenu( ISerieRepository iSerieRepository) {
-        this.menu =new Menu();
+    private ISerieRepository iSerieRepository;
+
+    @Autowired
+    public SeriesMenu(ISerieRepository iSerieRepository) {
         this.iSerieRepository = iSerieRepository;
     }
 
@@ -33,7 +32,7 @@ public class SeriesMenu {
                     1.Buscar series
                     2.Buscar episodios
                     3.Mostrar series buscadas
-                    4.""");
+                    4.Salir""");
             switch (op= scanner.nextInt()){
                 case 1:
                     buscarSerieWeb();
@@ -58,6 +57,7 @@ public class SeriesMenu {
         DatosSerie datos = menu.buscarSerie();
         Serie serie=new Serie(datos);
         //datosSeries.add(datos);
+        iSerieRepository.save(serie);
         System.out.println(datos);
 
     }
