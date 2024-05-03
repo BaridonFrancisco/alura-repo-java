@@ -2,16 +2,24 @@ package Model;
 
 
 
+import jakarta.persistence.*;
+
+import java.util.List;
 import java.util.OptionalDouble;
-
+@Entity
+@Table(name = "series")
 public class Serie {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
+    @Column(name = "titulo",unique = true)
     String titulo;
 
     String anio;
 
     String actores;
-
+    @Enumerated(EnumType.STRING)
     Categoria genero;
 
     Double evaluacion;
@@ -19,6 +27,9 @@ public class Serie {
     String poster;
 
     String sinopsis;
+
+    @Transient
+    private List<Episodio> listEpisodios;
 
     public Serie(DatosSerie datosSerie) {
         this.titulo = datosSerie.titulo();

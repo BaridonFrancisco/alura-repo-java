@@ -2,21 +2,29 @@ package Principal;
 
 import Model.DatosSerie;
 import Model.Serie;
+import Service.ISerieRepository;
 import com.fasterxml.jackson.core.JsonProcessingException;
 
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Scanner;
-import java.util.stream.Collectors;
+
 
 public class SeriesMenu {
     private Menu menu;
     private final Scanner scanner=new Scanner(System.in);
     private List<DatosSerie> datosSeries = new ArrayList<>();
+    ISerieRepository iSerieRepository;
     public SeriesMenu() {
         this.menu = new Menu();
     }
+
+    public SeriesMenu( ISerieRepository iSerieRepository) {
+        this.menu =new Menu();
+        this.iSerieRepository = iSerieRepository;
+    }
+
     public void startMenu() throws JsonProcessingException {
         int op;
         System.out.println("bienvenido al menu");
@@ -48,8 +56,10 @@ public class SeriesMenu {
 
     private void buscarSerieWeb() throws JsonProcessingException {
         DatosSerie datos = menu.buscarSerie();
-        datosSeries.add(datos);
+        Serie serie=new Serie(datos);
+        //datosSeries.add(datos);
         System.out.println(datos);
+
     }
     private void mostrarSeriesBuscadas() {
         List<Serie> series;
