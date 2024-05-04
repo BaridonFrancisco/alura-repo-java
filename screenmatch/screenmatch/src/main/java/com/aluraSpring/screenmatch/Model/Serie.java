@@ -4,6 +4,7 @@ package com.aluraSpring.screenmatch.Model;
 
 import jakarta.persistence.*;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.OptionalDouble;
 @Entity
@@ -17,7 +18,7 @@ public class Serie {
     String titulo;
 
     String anio;
-
+    private Integer totalTemporadas;
     String actores;
     @Enumerated(EnumType.STRING)
     Categoria genero;
@@ -28,8 +29,12 @@ public class Serie {
 
     String sinopsis;
 
-    @Transient
-    private List<Episodio> listEpisodios;
+    @OneToMany(mappedBy = "serie",cascade = CascadeType.ALL,fetch = FetchType.EAGER)
+    private List<Episodio> listEpisodios=new ArrayList<>();
+
+
+    public Serie() {
+    }
 
     public Serie(DatosSerie datosSerie) {
         this.titulo = datosSerie.titulo();
@@ -40,6 +45,7 @@ public class Serie {
         this.actores = datosSerie.actores();
         this.sinopsis = datosSerie.sinopsis();
         this.poster = datosSerie.sinopsis();
+        this.totalTemporadas=datosSerie.numero();
 
     }
 
@@ -97,6 +103,26 @@ public class Serie {
 
     public void setSinopsis(String sinopsis) {
         this.sinopsis = sinopsis;
+    }
+
+    public Integer getTotalTemporadas() {
+        return totalTemporadas;
+    }
+
+    public void setTotalTemporadas(Integer totalTemporadas) {
+        this.totalTemporadas = totalTemporadas;
+    }
+
+    public List<Episodio> getListEpisodios() {
+        return listEpisodios;
+    }
+
+    public void setListEpisodios(List<Episodio> listEpisodios) {
+        this.listEpisodios = listEpisodios;
+    }
+
+    public Long getId() {
+        return id;
     }
 
     @Override

@@ -63,6 +63,7 @@ public class Menu {
     public List<Episodio> listaEpisodios(List<DatosPorTemporada>temporadas){
          return temporadas.stream()
                         .flatMap(temporada->temporada.episodios().stream()
+                                .filter(e->!e.fechaLanzamiento().equalsIgnoreCase("N/A"))
                                 .map(episodio->new Episodio(temporada.numeroTemporada(),episodio)))
                         .toList();
 
@@ -90,4 +91,17 @@ public class Menu {
                 .summaryStatistics();
 
     }
+    public List<DatosPorTemporada> traerAllTemporadas(String nombre,int season) throws JsonProcessingException {
+        String json;
+        System.out.println(nombre);
+        System.out.println(season);
+        List<DatosPorTemporada> listTemporadas=new ArrayList<>();
+        for (int i=1;i<=season;i++){
+            json=consumoApi.obtenerDatos(URL_BASE+(nombre.replace(" ","+"))+"&Season="+i+"&apikey="+API_KEY);
+            var datosTemporada=convertirDatos.convertirDatos(json,DatosPorTemporada.class);
+            listTemporadas.add(datosTemporada);
+        }
+        return listTemporadas;
+    }
+
 }

@@ -1,22 +1,20 @@
 package com.aluraSpring.screenmatch.Principal;
 
 import com.aluraSpring.screenmatch.Model.DatosSerie;
+import com.aluraSpring.screenmatch.Model.Episodio;
 import com.aluraSpring.screenmatch.Model.Serie;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import org.springframework.beans.factory.annotation.Autowired;
 import com.aluraSpring.screenmatch.repository.ISerieRepository;
 
-import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
 
 
 public class SeriesMenu {
     private Menu menu= new Menu();
     private final Scanner scanner=new Scanner(System.in);
     private List<DatosSerie> datosSeries = new ArrayList<>();
-
+    List<Serie>series=new ArrayList<>();
     private ISerieRepository iSerieRepository;
 
     @Autowired
@@ -32,24 +30,27 @@ public class SeriesMenu {
                     1.Buscar series
                     2.Buscar episodios
                     3.Mostrar series buscadas
+                    4.Buscar serie por titulo
                     4.Salir""");
             switch (op= scanner.nextInt()){
                 case 1:
                     buscarSerieWeb();
                   break;
                 case 2:
-                    var temporadas=menu.traerAllTemporadas();
-                    var todosEpisodios=menu.listaEpisodios(temporadas);
-                    todosEpisodios.forEach(System.out::println);
+                    buscarEpisodioPorSerie();
                     break;
                 case 3:
-                    mostrarSeriesBuscadas();
+                    listaSeriesBuscadas();
+                    break;
+                case 4:
+                    System.out.println("Saliendo");
                     break;
                 default:
                     System.out.println("Opcion incorrecta");
+                    break;
             }
             scanner.nextLine();
-        }while (op!=5);
+        }while (op!=0);
         scanner.close();
     }
 
@@ -70,6 +71,39 @@ public class SeriesMenu {
         series.stream()
                 .sorted(Comparator.comparing(Serie::getGenero))
                 .forEach(System.out::println);
+    }
+
+    private void listaSeriesBuscadas(){
+        this.series=iSerieRepository.findAll();
+                this.series.stream()
+                        .sorted(Comparator.comparing(Serie::getGenero))
+                        .forEach(System.out::println);
+    }
+
+    private void buscarEpisodioPorSerie() throws JsonProcessingException {
+        scanner.nextLine();
+        listaSeriesBuscadas();
+        System.out.println("Escriba el nombre de la serie que desea ver");
+        var nombreSerie = scanner.nextLine();
+        Optional<Serie> serie = series.stream()
+                .filter(s -> s.getTitulo().toLowerCase().contains(nombreSerie.toLowerCase()))
+                .findFirst();
+        if(serie.isPresent()){
+            Serie s=serie.get();
+            var re=menu.traerAllTemporadas(nombreSerie,s.getTotalTemporadas());
+            var episodios=menu.listaEpisodios(re);
+            episodios.forEach(ep->ep.setSerie(s));
+            s.setListEpisodios(episodios);
+            System.out.println("size"+serie.get().getListEpisodios().size());
+
+            iSerieRepository.save(s);
+
+
+        }
+
+
+
+
     }
 
 
