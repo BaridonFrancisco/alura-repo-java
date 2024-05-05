@@ -2,6 +2,7 @@ package com.aluraSpring.screenmatch.principal;
 
 import com.aluraSpring.screenmatch.model.Categoria;
 import com.aluraSpring.screenmatch.model.DatosSerie;
+import com.aluraSpring.screenmatch.model.Episodio;
 import com.aluraSpring.screenmatch.model.Serie;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,6 +35,8 @@ public class SeriesMenu {
                     5.Top 5 mejores series
                     6.Buscar por categoria
                     7.Buscar series por temporadas y evaluacion
+                    8.Buscar episodio por nombre
+                    9.Top 5 episodios
                     4.Salir""");
             switch (op= scanner.nextInt()){
                 case 1:
@@ -57,6 +60,12 @@ public class SeriesMenu {
                 case 7:
                     buscarPorEvaluacion_Temporadas();
                     break;
+                case 8:
+                    buscarEpisodioPorNombre();
+                    break;
+                case 9:
+                    top5Episodios();
+                    break;
                 default:
                     System.out.println("Opcion incorrecta");
                     break;
@@ -66,8 +75,31 @@ public class SeriesMenu {
         scanner.close();
     }
 
+    private void top5Episodios() throws JsonProcessingException {
+       var op=iSerieRepository.findByTitulo("The Walking Dead");
+        op.ifPresent(opt->{
+            List<Episodio> listaEp = iSerieRepository.top5Episodios(opt);
+            listaEp.forEach(System.out::println);
+        });
+
+
+
+
+    }
+
+    private void buscarEpisodioPorNombre() throws JsonProcessingException {
+        List<Episodio>listEpisodio=iSerieRepository.episodiosPorNombre("Episode #1.1");
+        listEpisodio.forEach(System.out::println);
+
+    }
+
     private void buscarPorEvaluacion_Temporadas() {
-        List<Serie>re=iSerieRepository.findTemporadasEvaluaciones(6,9.1);
+        scanner.nextLine();
+        System.out.println("Ingrese el numero temporadas");
+        Integer totalTemporadas=scanner.nextInt();
+        System.out.println("Ingrese la evaluacion de la serie");
+        Double evaluacion=scanner.nextDouble();
+        List<Serie>re=iSerieRepository.findTemporadasEvaluaciones(totalTemporadas,evaluacion);
         re.forEach(System.out::println);
     }
 

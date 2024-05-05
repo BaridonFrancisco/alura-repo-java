@@ -1,5 +1,6 @@
 package com.aluraSpring.screenmatch.repository;
 
+import ch.qos.logback.core.pattern.parser.OptionTokenizer;
 import com.aluraSpring.screenmatch.model.Categoria;
 import com.aluraSpring.screenmatch.model.Episodio;
 import com.aluraSpring.screenmatch.model.Serie;
@@ -8,6 +9,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Optional;
 
 
 @Repository
@@ -21,6 +23,11 @@ public interface ISerieRepository extends JpaRepository<Serie,Long> {
     @Query("select s from Serie s where s.totalTemporadas <= :temporadas AND s.evaluacion >= :evaluaciones")
     List<Serie>findTemporadasEvaluaciones(Integer temporadas,Double evaluaciones);
 
-    @Query("SELECT e FROM Serie s WHERE JOIN s.listEpisodios e WHERE e.titulo ILIKE %nombreEpisodio%")
+    @Query("SELECT e FROM Serie s JOIN s.listEpisodios e WHERE e.titulo ILIKE %:nombreEpisodio%")
     List<Episodio>episodiosPorNombre(String nombreEpisodio);
+
+    @Query("SELECT e FROM Serie s JOIN s.listEpisodios e WHERE s = :serie ORDER BY s.evaluacion DESC LIMIT 5")
+    List<Episodio>top5Episodios(Serie serie);
+
+    Optional<Serie>findByTitulo(String titulo);
 }
