@@ -1,12 +1,12 @@
-package com.aluraSpring.screenmatch.Principal;
+package com.aluraSpring.screenmatch.principal;
 
-import com.aluraSpring.screenmatch.Model.DatosEpisodio;
-import com.aluraSpring.screenmatch.Model.DatosPorTemporada;
-import com.aluraSpring.screenmatch.Model.DatosSerie;
-import com.aluraSpring.screenmatch.Model.Episodio;
-import com.aluraSpring.screenmatch.Service.ConsumoAPI;
-import com.aluraSpring.screenmatch.Service.ConvertirDatos;
-import com.aluraSpring.screenmatch.Service.IConvertirDatos;
+import com.aluraSpring.screenmatch.model.DatosEpisodio;
+import com.aluraSpring.screenmatch.model.DatosPorTemporada;
+import com.aluraSpring.screenmatch.model.DatosSerie;
+import com.aluraSpring.screenmatch.model.Episodio;
+import com.aluraSpring.screenmatch.service.ConsumoAPI;
+import com.aluraSpring.screenmatch.service.ConvertirDatos;
+import com.aluraSpring.screenmatch.service.IConvertirDatos;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;

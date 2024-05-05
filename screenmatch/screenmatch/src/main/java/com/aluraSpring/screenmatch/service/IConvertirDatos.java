@@ -1,4 +1,4 @@
-package com.aluraSpring.screenmatch.Service;
+package com.aluraSpring.screenmatch.service;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 

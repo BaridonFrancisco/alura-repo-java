@@ -1,4 +1,4 @@
-package com.aluraSpring.screenmatch.Principal;
+package com.aluraSpring.screenmatch.principal;
 
 import java.util.ArrayList;
 import java.util.List;

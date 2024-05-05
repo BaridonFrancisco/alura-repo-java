@@ -1,4 +1,4 @@
-package com.aluraSpring.screenmatch.Model;
+package com.aluraSpring.screenmatch.model;
 
 
 
@@ -18,7 +18,7 @@ public class Serie {
     String titulo;
 
     String anio;
-    private Integer totalTemporadas;
+    Integer totalTemporadas;
     String actores;
     @Enumerated(EnumType.STRING)
     Categoria genero;
@@ -42,10 +42,12 @@ public class Serie {
         this.actores = datosSerie.actores();
         this.evaluacion = OptionalDouble.of(Double.parseDouble(datosSerie.evaluaciones())).orElse(0.0);
         this.genero = Categoria.getGenere(datosSerie.genero().split(",")[0].trim());
+        System.out.println(this.genero);
         this.actores = datosSerie.actores();
         this.sinopsis = datosSerie.sinopsis();
         this.poster = datosSerie.sinopsis();
         this.totalTemporadas=datosSerie.numero();
+
 
     }
 
@@ -135,6 +137,7 @@ public class Serie {
                 ", evaluacion=" + evaluacion +
                 ", poster='" + poster + '\'' +
                 ", sinopsis='" + sinopsis + '\'' +
+                "Episodios"+ this.listEpisodios+
                 '}';
     }
 }

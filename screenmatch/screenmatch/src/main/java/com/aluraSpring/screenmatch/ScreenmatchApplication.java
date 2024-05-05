@@ -1,6 +1,6 @@
 package com.aluraSpring.screenmatch;
 
-import com.aluraSpring.screenmatch.Principal.SeriesMenu;
+import com.aluraSpring.screenmatch.principal.SeriesMenu;
 import com.aluraSpring.screenmatch.repository.ISerieRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;

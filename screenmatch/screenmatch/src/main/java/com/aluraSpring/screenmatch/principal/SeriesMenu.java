@@ -1,8 +1,8 @@
-package com.aluraSpring.screenmatch.Principal;
+package com.aluraSpring.screenmatch.principal;
 
-import com.aluraSpring.screenmatch.Model.DatosSerie;
-import com.aluraSpring.screenmatch.Model.Episodio;
-import com.aluraSpring.screenmatch.Model.Serie;
+import com.aluraSpring.screenmatch.model.Categoria;
+import com.aluraSpring.screenmatch.model.DatosSerie;
+import com.aluraSpring.screenmatch.model.Serie;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import org.springframework.beans.factory.annotation.Autowired;
 import com.aluraSpring.screenmatch.repository.ISerieRepository;
@@ -31,6 +31,9 @@ public class SeriesMenu {
                     2.Buscar episodios
                     3.Mostrar series buscadas
                     4.Buscar serie por titulo
+                    5.Top 5 mejores series
+                    6.Buscar por categoria
+                    7.Buscar series por temporadas y evaluacion
                     4.Salir""");
             switch (op= scanner.nextInt()){
                 case 1:
@@ -45,6 +48,15 @@ public class SeriesMenu {
                 case 4:
                     System.out.println("Saliendo");
                     break;
+                case 5:
+                    buscarTop5Series();
+                    break;
+                case 6:
+                    buscarPorCategoria();
+                    break;
+                case 7:
+                    buscarPorEvaluacion_Temporadas();
+                    break;
                 default:
                     System.out.println("Opcion incorrecta");
                     break;
@@ -52,6 +64,29 @@ public class SeriesMenu {
             scanner.nextLine();
         }while (op!=0);
         scanner.close();
+    }
+
+    private void buscarPorEvaluacion_Temporadas() {
+        List<Serie>re=iSerieRepository.findTemporadasEvaluaciones(6,9.1);
+        re.forEach(System.out::println);
+    }
+
+    private void buscarPorCategoria() {
+       /* System.out.println("Ingrese el nombre de la categoria");
+        String categoria= scanner.nextLine().trim();*/
+        List<Serie>seriePorCategoria=iSerieRepository.findByGenero(Categoria.ACCION);
+        if(!seriePorCategoria.isEmpty()){
+            seriePorCategoria.forEach(System.out::println);
+        }else{
+            System.out.println("categoria no encontrada");
+        }
+
+    }
+
+    private void buscarTop5Series() {
+        List<Serie>series=iSerieRepository.findTop5ByOrderByEvaluacionDesc();
+        series.forEach(s->System.out.println("Titulo: "+s.getTitulo()+" Evaluacion: "+s.getEvaluacion()));
+
     }
 
     private void buscarSerieWeb() throws JsonProcessingException {

@@ -1,4 +1,4 @@
-package com.aluraSpring.screenmatch.Model;
+package com.aluraSpring.screenmatch.model;
 
 import com.fasterxml.jackson.annotation.JsonAlias;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;

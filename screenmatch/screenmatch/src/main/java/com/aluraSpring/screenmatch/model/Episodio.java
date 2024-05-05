@@ -1,4 +1,4 @@
-package com.aluraSpring.screenmatch.Model;
+package com.aluraSpring.screenmatch.model;
 
 import jakarta.persistence.*;
 

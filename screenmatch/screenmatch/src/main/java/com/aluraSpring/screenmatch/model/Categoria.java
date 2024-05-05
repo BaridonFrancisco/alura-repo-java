@@ -1,10 +1,16 @@
-package com.aluraSpring.screenmatch.Model;
+package com.aluraSpring.screenmatch.model;
+
+import jakarta.persistence.Entity;
 
 import java.util.Arrays;
 
 
 public enum Categoria {
-    ACCION("ACTION"), AVENTURA("ADVENTURE"), DRAMA("DRAMA"), DESCONOCIDA("UNKNOW");
+    ACCION("ACTION"),
+    AVENTURA("ADVENTURE"),
+    DRAMA("DRAMA"),
+    TERROR("Horror"),
+    DESCONOCIDA("UNKNOW");
 
     private String value;
 
