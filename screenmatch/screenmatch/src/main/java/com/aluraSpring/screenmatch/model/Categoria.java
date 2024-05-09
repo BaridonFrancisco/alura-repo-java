@@ -1,6 +1,6 @@
 package com.aluraSpring.screenmatch.model;
 
-import jakarta.persistence.Entity;
+
 
 import java.util.Arrays;
 
@@ -12,7 +12,7 @@ public enum Categoria {
     TERROR("Horror"),
     DESCONOCIDA("UNKNOW");
 
-    private String value;
+    private final String value;
 
     Categoria(String value) {
         this.value = value;

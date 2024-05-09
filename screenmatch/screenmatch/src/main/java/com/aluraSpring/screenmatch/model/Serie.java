@@ -45,7 +45,7 @@ public class Serie {
         System.out.println(this.genero);
         this.actores = datosSerie.actores();
         this.sinopsis = datosSerie.sinopsis();
-        this.poster = datosSerie.sinopsis();
+        this.poster = datosSerie.poster();
         this.totalTemporadas=datosSerie.numero();
 
 

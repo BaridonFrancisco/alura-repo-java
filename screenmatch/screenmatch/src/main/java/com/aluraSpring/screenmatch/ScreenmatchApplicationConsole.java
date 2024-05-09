@@ -9,7 +9,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 
 @SpringBootApplication
-public class ScreenmatchApplicationConsole  {
+public class ScreenmatchApplicationConsole   {
 	// implementar implements CommandLineRunner
 	/*@Autowired(required = true)
 	private ISerieRepository iSerieRepository;
