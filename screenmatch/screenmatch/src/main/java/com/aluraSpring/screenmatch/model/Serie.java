@@ -107,6 +107,8 @@ public class Serie {
         this.sinopsis = sinopsis;
     }
 
+
+
     public Integer getTotalTemporadas() {
         return totalTemporadas;
     }

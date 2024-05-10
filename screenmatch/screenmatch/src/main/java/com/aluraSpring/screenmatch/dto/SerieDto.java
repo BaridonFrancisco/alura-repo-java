@@ -4,7 +4,9 @@ import com.aluraSpring.screenmatch.model.Categoria;
 
 
 public record SerieDto(
+        Long id,
         String anio,
+        String titulo,
         Integer totalTemporadas,
         String actores,
         Categoria genero,
