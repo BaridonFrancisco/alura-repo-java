@@ -5,10 +5,9 @@ import com.aluraSpring.screenmatch.dto.SerieDto;
 import com.aluraSpring.screenmatch.model.Episodio;
 import com.aluraSpring.screenmatch.service.SerieService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.*;
+
 import java.util.List;
 
 
@@ -48,6 +47,10 @@ public class SeriesController {
     public List<SerieDto>seriesPorCategoria(@PathVariable String nombreGenero){
             return serieService.obtenerSeriePorCategoria(nombreGenero);
     }
+    @GetMapping("/id/temporada/top")git
+    public List<EpisodioDto>top5episodios(@PathVariable Long id){
+        return serieService.topEpisodios(id);
 
+    }
 
 }

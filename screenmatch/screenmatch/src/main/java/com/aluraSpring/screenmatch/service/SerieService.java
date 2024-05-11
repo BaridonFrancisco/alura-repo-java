@@ -3,12 +3,14 @@ package com.aluraSpring.screenmatch.service;
 import com.aluraSpring.screenmatch.dto.EpisodioDto;
 import com.aluraSpring.screenmatch.dto.SerieDto;
 import com.aluraSpring.screenmatch.model.Categoria;
+import com.aluraSpring.screenmatch.model.Episodio;
 import com.aluraSpring.screenmatch.model.Serie;
 import com.aluraSpring.screenmatch.repository.ISerieRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -69,5 +71,14 @@ public class SerieService {
         return convertToListDto(iSerieRepository.findByGenero(categoria));
 
 
+    }
+
+    public List<EpisodioDto> topEpisodios(Long id) {
+      var serie=iSerieRepository.findById(id);
+        return serie.map(value -> value.getListEpisodios().stream()
+                .sorted(Comparator.comparing(Episodio::getEvaluacion))
+                .limit(5)
+                .map(e -> new EpisodioDto(e.getTemporada(), e.getTitulo(), e.getNumeroEpisodio()))
+                .collect(Collectors.toList())).orElse(null);
     }
 }
